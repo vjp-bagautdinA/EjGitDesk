@@ -1,20 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package tema3ej9;
-import java.util.Scanner;
-/**
- *
- * @author alumno
- */
+import java.util.Scanner;//Importo la utilidad Scanner
+//@author alumno
 public class Tema3Ej9 {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        Scanner entrada = new Scanner (System.in);
+        Scanner entrada = new Scanner (System.in);//Creo nuevo scanner llamado entrada
         System.out.println("Por favor, introduca el primer número:");
         int n1 = entrada.nextInt();
         System.out.println("Ahora, introduzca un segundo número:");
@@ -22,9 +11,9 @@ public class Tema3Ej9 {
         System.out.println("Introduzca el tercer número");
         int n3 = entrada.nextInt();
         System.out.println("Por último, introduzca un cuarto número");
-        int n4 = entrada.nextInt();
-        int aux;
-        if(n1>n2){aux=n1;n1=n2;n2=aux;}
+        int n4 = entrada.nextInt();//Introduzco 4 variables int dadas por el usuario
+        int aux;//Auxiliar
+        if(n1>n2){aux=n1;n1=n2;n2=aux;}//Compruebo si el primer numero es mayor que el segundo, si lo es
         if(n1>n3){aux=n1;n1=n3;n3=aux;}
         if(n1>n4){aux=n1;n1=n4;n4=aux;}
         if(n2>n3){aux=n2;n2=n3;n3=aux;}

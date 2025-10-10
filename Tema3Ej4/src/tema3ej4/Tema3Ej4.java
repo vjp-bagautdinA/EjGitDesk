@@ -1,20 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package tema3ej4;
-import java.util.Scanner;
-/**
- *
- * @author alumno
- */
+import java.util.Scanner;//Importo la utilidad Scanner
+//@author alumno
 public class Tema3Ej4 {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        Scanner entrada = new Scanner (System.in);
+        Scanner entrada = new Scanner (System.in);//Creo nuevo scanner llamado entrada
         System.out.println("Por favor, introduzca el primer número:");
         int numero1 = entrada.nextInt();
         System.out.println("Ahora, introduzca el segundo número");
@@ -24,7 +13,7 @@ public class Tema3Ej4 {
         if (numero1 < numero2 && numero1 < numero3){
         System.out.println("El número menor de los introducidos es el "+numero1);
     }   else if (numero2<numero1 && numero2<numero3){
-        System.out.println("El número menor de los introducidos es el "+numero2);
+        System.out.println("El número menor de los introducidos es el "+numero2);//Lo mismo que el 3 pero comprobamos cual es el menor
     }   else {
             System.out.println("El número menor de los introducidos es el "+numero3);
         

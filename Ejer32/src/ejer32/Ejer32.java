@@ -1,24 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package ejer32;
-import java.util.Scanner;
-/**
- *
- * @author alumno
- */
+import java.util.Scanner;//Importo la utilidad Scanner
+//@author alumno
 public class Ejer32 {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-    Scanner entrada = new Scanner (System.in);
+    Scanner entrada = new Scanner (System.in);//Creo nuevo scanner llamado entrada
         System.out.println("Por favor, indique una cantidad de dinero:");
-        int cantidad = entrada.nextInt();
-        int original = cantidad;
-        int billetes50 = cantidad/50;
+        int cantidad = entrada.nextInt(); //Variable original de dinero dado por el usuario
+        int original = cantidad;//Variable auxiliar que guarda la cantidad original de dinero
+        int billetes50 = cantidad/50;//En todos estos calculos dividimos la cantidad original por la cantidad del billetes y guardamos el resto en la variable original para calcular con el siguiente hasta llegar a 0
         cantidad = cantidad%50;
         int billetes20 = cantidad/20;
         cantidad = cantidad%20;
@@ -30,6 +19,7 @@ public class Ejer32 {
         cantidad = cantidad%2;
         int monedas1 = cantidad;
         System.out.println(original+" euros se descomponen en "+billetes50+" billetes de 50, "+billetes20+" billetes de 20, "+billetes10+" billetes de 10, "+billetes5+" billetes de 5, "+monedas2+" monedas de 2 euros y "+monedas1+" monedas de 1 euro.");
+        //Sout final con todas las variables calculadas anteriormente
                 
                 
                 

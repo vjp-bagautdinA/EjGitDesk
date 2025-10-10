@@ -1,25 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package tema3ej6;
-import java.util.Scanner;
-/**
- *
- * @author alumno
- */
+import java.util.Scanner;//Importo la utilidad Scanner
+//@author alumno
 public class Tema3Ej6 {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        Scanner entrada = new Scanner (System.in);
+        Scanner entrada = new Scanner (System.in);//Creo nuevo scanner llamado entrada
         int nota;
         System.out.println("Introduzca tu nota del 1 al 10");
-        nota = entrada.nextInt();
+        nota = entrada.nextInt(); //Introduzco una variable int dada por el usuario
         
-        switch (nota) {
+        switch (nota) { //Compruebo cada posible caso que el numero puede ser y lo relaciono con su resultado correspondiente
             case 0:
             case 1:
             case 2:
@@ -40,7 +29,7 @@ public class Tema3Ej6 {
                 System.out.println("Tienes un sobresaliente");
                 break;
             default:
-                System.out.println("El numero es invalido");
+                System.out.println("El numero es invalido"); //Si el numero no esta entre 0 y 10 no es valido, por lo que pongo un default
             
               
             
