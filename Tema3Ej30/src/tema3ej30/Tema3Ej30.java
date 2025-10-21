@@ -14,8 +14,7 @@ public class Tema3Ej30 {
             } catch (java.util.InputMismatchException e) {
                 System.out.println("Eso no es un número, inténtalo otra vez."); //Si es una letra lo pillamos en catch y reseteamos el valor input
                 entrada.next(); 
-                input = -1;      
-                continue;        
+                input = -1;             
             }
             if (input < number && input >= 0) {
                 System.out.println("Más para arriba");//Dependiendo del valor le decimos si se queda corto o largo
