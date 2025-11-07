@@ -1,17 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package salida;
-
-/**
- *
- * @author alumno
- */
+//@author alumno
 public class ParOImpar {
     public static void check(int num) {
-        if (num%2 == 0) {
-            System.out.println(num+ " es par");
+        if (num%2 == 0) {//Checkeamos si el input es par o par viendo el modulo del numero dividido por 2
+            System.out.println(num+ " es par");//Imprimimos resultados correspondientes
        }else {
             System.out.println(num+" es impar");
         }
