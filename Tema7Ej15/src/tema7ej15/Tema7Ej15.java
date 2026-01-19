@@ -13,8 +13,56 @@ public class Tema7Ej15 {
         return array;
     }
     
+    public static void printArray(int[] array) {
+        for (int i = 0; i < array.length;i++) {
+            System.out.println(array[i]);
+        }
+    }
+    
+    public static void printReverseArray(int[] array) {
+        int[] reverseArray = new int [array.length];
+        
+        for (int i = 0; i < array.length;i++) {
+            reverseArray[i] = array[array.length - 1 - i];
+        }
+        for (int j = 0; j < reverseArray.length;j++) {
+            System.out.println(reverseArray[j]);
+        }
+    }
+    
+    public static void printSumaArray(int[] array) {
+        int suma = 0;
+        
+        for (int i = 0;i < array.length;i++) {
+            suma = suma + array[i];
+        }
+        System.out.println("La suma de las ventas es: "+suma);
+    }
+    
+    public static void ventasMesesPares(int[] array) {
+        
+        for (int i = 1;i < array.length ;i = i + 2) {
+            System.out.println(array[i]);
+        }
+    }
+    
+    public static void mesMayorVentas(int[] array) {
+        String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
+        int mayor = 0;
+        int mes = 0;
+        for (int i = 0;i <array.length;i++) {
+            if (array[i]> mayor) {
+                mayor = array[i];
+                mes = i;
+            }
+            System.out.println("El mes con el mayor numero de ventas es: "+meses[mes]+" con "+mayor+" ventas");
+        }
+    }
+    
     public static void menu() {
         int eleccionMenu = -1;
+        boolean ready;
+        int[] array = new int[12];
         Scanner input = new Scanner(System.in);
         do {
             try {
@@ -37,21 +85,48 @@ public class Tema7Ej15 {
             switch (eleccionMenu) {
                 case 1: {
                     rellenarArray();
+                    array = rellenarArray();
+                    ready = true;
                     break;
                 }
                 case 2: {
+                    if (ready = true) {
+                    printArray(array);
+                    }else {
+                        System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
+                    }
                     break;
                 }
                 case 3: {
+                    if (ready = true) {
+                    printReverseArray(array);
+                    }else {
+                        System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
+                    }
                     break;
                 }
                 case 4: {
+                    if (ready = true) {
+                    printSumaArray(array);
+                    }else {
+                        System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
+                    }
                     break;
                 }
                 case 5: {
+                    if (ready = true) {
+                    ventasMesesPares(array);
+                    }else {
+                        System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
+                    }
                     break;
                 }
                 case 6: {
+                    if (ready = true) {
+                    mesMayorVentas(array);
+                    }else {
+                        System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
+                    }
                     break;
                 }
             }
