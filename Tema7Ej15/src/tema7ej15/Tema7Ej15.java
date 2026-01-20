@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 public class Tema7Ej15 {
     
-    public static int[] rellenarArray() {
+    public static int[] rellenarArray() {//Metodo que rellena el array con numero del 10 al 100 inclusivo
         int[] array = new int[12];
         
         for (int i = 0; i <=11; i++) {
@@ -13,13 +13,13 @@ public class Tema7Ej15 {
         return array;
     }
     
-    public static void printArray(int[] array) {
+    public static void printArray(int[] array) {//Imprimimos cada uno de los espacios del array
         for (int i = 0; i < array.length;i++) {
             System.out.println(array[i]);
         }
     }
     
-    public static void printReverseArray(int[] array) {
+    public static void printReverseArray(int[] array) {//Invertimos el array y luego lo imprimimos
         int[] reverseArray = new int [array.length];
         
         for (int i = 0; i < array.length;i++) {
@@ -30,7 +30,7 @@ public class Tema7Ej15 {
         }
     }
     
-    public static void printSumaArray(int[] array) {
+    public static void printSumaArray(int[] array) {//Sumamos todos los valores del array y luego imprimimos la suma
         int suma = 0;
         
         for (int i = 0;i < array.length;i++) {
@@ -39,14 +39,14 @@ public class Tema7Ej15 {
         System.out.println("La suma de las ventas es: "+suma);
     }
     
-    public static void ventasMesesPares(int[] array) {
+    public static void ventasMesesPares(int[] array) {//Pasamos solo por los meses pares y imprimimos sus valores
         
         for (int i = 1;i < array.length ;i = i + 2) {
             System.out.println(array[i]);
         }
     }
     
-    public static void mesMayorVentas(int[] array) {
+    public static void mesMayorVentas(int[] array) {//Recorremos cada espacio del array y guardamos el valor mayor junto con el mes al que pertenece y luego lo imprimimos
         String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
         int mayor = 0;
         int mes = 0;
@@ -55,13 +55,13 @@ public class Tema7Ej15 {
                 mayor = array[i];
                 mes = i;
             }
-            System.out.println("El mes con el mayor numero de ventas es: "+meses[mes]+" con "+mayor+" ventas");
         }
+        System.out.println("El mes con el mayor numero de ventas es: "+meses[mes]+" con "+mayor+" ventas");
     }
     
-    public static void menu() {
+    public static void menu() {//Muestra el menu hasta que se salga del programa y protege contra inputMismatch
         int eleccionMenu = -1;
-        boolean ready;
+        boolean ready = false;
         int[] array = new int[12];
         Scanner input = new Scanner(System.in);
         do {
@@ -90,7 +90,7 @@ public class Tema7Ej15 {
                     break;
                 }
                 case 2: {
-                    if (ready = true) {
+                    if (ready == true) {
                     printArray(array);
                     }else {
                         System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
@@ -98,7 +98,7 @@ public class Tema7Ej15 {
                     break;
                 }
                 case 3: {
-                    if (ready = true) {
+                    if (ready == true) {
                     printReverseArray(array);
                     }else {
                         System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
@@ -106,7 +106,7 @@ public class Tema7Ej15 {
                     break;
                 }
                 case 4: {
-                    if (ready = true) {
+                    if (ready == true) {
                     printSumaArray(array);
                     }else {
                         System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
@@ -114,7 +114,7 @@ public class Tema7Ej15 {
                     break;
                 }
                 case 5: {
-                    if (ready = true) {
+                    if (ready == true) {
                     ventasMesesPares(array);
                     }else {
                         System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
@@ -122,7 +122,7 @@ public class Tema7Ej15 {
                     break;
                 }
                 case 6: {
-                    if (ready = true) {
+                    if (ready == true) {
                     mesMayorVentas(array);
                     }else {
                         System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
@@ -136,6 +136,5 @@ public class Tema7Ej15 {
 
     public static void main(String[] args) {
         menu();        
-    }
-    
+    }    
 }
