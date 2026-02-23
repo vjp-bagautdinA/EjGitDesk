@@ -4,19 +4,21 @@ public class Empleado {
     //Atributos
     private String nombre;
     private int horas;
-    private double tarifaNormal = 15;
-    private double tarifaExtra = 22.5;
+    private double tarifaNormal;
+    private double tarifaExtra = tarifaNormal *1.5;
     private double sueldo;
     //Constructores
     
     public Empleado() {
         this.nombre = null;
         this.horas = 0;
+        this.tarifaNormal = 0;
     }
 
-    public Empleado(String nombre, int horas) {
+    public Empleado(String nombre, int horas, double tarifaNormal) {
         this.nombre = nombre;
         this.horas = horas;
+        this.tarifaNormal = tarifaNormal;
     }
     //Getters y Setters
 
