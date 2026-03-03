@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Menu {
     
-    public static void menu() {
-        int eleccionMenu = -1;
+    public static void menu() { //Metodo principal que enseña al usuario las opciones y controla excepciones.
+        int eleccionMenu = -1; //Atributos para controlar excepciones y elegir opciones.
         boolean ready = false;
         Scanner input = new Scanner(System.in);
         do {
             try {
-                System.out.println("-------------------------------------");
+                System.out.println("-------------------------------------");//Las opciones del menu separadas por barras y controladas con un trycatch.
                 System.out.println("¿Que quieres hacer?");
                 System.out.println("1. .");
                 System.out.println("2. .");
@@ -19,15 +19,7 @@ public class Menu {
                 System.out.println("4. Salir.");
                 System.out.println("-------------------------------------");
                 eleccionMenu = input.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Debe ser un numero.");
-                input.nextLine();
-            }
-            if (eleccionMenu < 1 && eleccionMenu > 4) {
-                System.out.println("Debe introducir un numero del 1 al 4");
-                eleccionMenu = 0;
-            }
-            switch (eleccionMenu) {
+                switch (eleccionMenu) {//Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
                 case 1: {
                     ready = true;
                     break;
@@ -46,8 +38,15 @@ public class Menu {
                     }
                     break;
                 }
+                default:
+                    System.out.println("Debes elegir una opcion del 1 al 4");
             }
-        } while (eleccionMenu != 4);
+            } catch (InputMismatchException e) {
+                System.out.println("Debe ser un numero.");
+                input.nextLine();
+            }
+            
+        } while (eleccionMenu != 4); //Volvemos a presentar el menu hasta que el usuario decide salir del programa.
 
     }
 
