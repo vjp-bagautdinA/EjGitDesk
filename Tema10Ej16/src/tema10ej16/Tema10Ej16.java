@@ -21,24 +21,23 @@ public class Tema10Ej16 {
                 System.out.println("-------------------------------------");
                 eleccionMenu = input.nextInt();
                 switch (eleccionMenu) {//Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
-                    case 1: {
+                    case 1 -> {
                         menuAdministración(productos);
                         ready = true;
-                        break;
                     }
-                    case 2: {
+                    case 2 -> {
                         if (ready == true) {
                             menuCompra(productos);
                         } else {
                             System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
                         }
-                        break;
                     }
-                    default:
+                    default ->
                         System.out.println("Debes elegir una opcion del 1 al 3");
                 }
+                //Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
             } catch (InputMismatchException e) {
-                System.out.println("Debe ser un numero.");
+                System.out.println("Debe introducir un numero.");
                 input.nextLine();
             }
 
@@ -61,32 +60,30 @@ public class Tema10Ej16 {
                 System.out.println("-------------------------------------");
                 eleccionMenu = input.nextInt();
                 switch (eleccionMenu) {//Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
-                    case 1: {
+                    case 1 -> {
                         añadirProducto(productos);
                         ready = true;
-                        break;
                     }
-                    case 2: {
+                    case 2 -> {
                         if (ready == true) {
                             verLista(productos);
                         } else {
                             System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
                         }
-                        break;
                     }
-                    case 3: {
+                    case 3 -> {
                         if (ready == true) {
                             eliminarProducto(productos);
                         } else {
                             System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
                         }
-                        break;
                     }
-                    default:
+                    default ->
                         System.out.println("Debes elegir una opcion del 1 al 4");
                 }
+                //Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
             } catch (InputMismatchException e) {
-                System.out.println("Debe ser un numero.");
+                System.out.println("Debe introducir un numero.");
                 input.nextLine();
             }
 
@@ -106,15 +103,15 @@ public class Tema10Ej16 {
                 System.out.println("-------------------------------------");
                 eleccionMenu = input.nextInt();
                 switch (eleccionMenu) {//Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
-                    case 1: {
+                    case 1 -> {
                         comprarProducto(productos);
-                        break;
                     }
-                    default:
+                    default ->
                         System.out.println("Debes elegir una opcion del 1 al 2");
                 }
+                //Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
             } catch (InputMismatchException e) {
-                System.out.println("Debe ser un numero.");
+                System.out.println("Debe introducir un numero.");
                 input.nextLine();
             }
 
@@ -123,7 +120,6 @@ public class Tema10Ej16 {
     }
 
     public static void añadirProducto(ArrayList<Producto> productos) { //Metodo que pregunta el valor de los atributos de un nuevo producto(objeto) u lo añade a la lista.
-        Scanner input = new Scanner(System.in);
         int stock;
         String nombre;
         float precio;
@@ -132,21 +128,16 @@ public class Tema10Ej16 {
             checkAllowed = false;
         }
         System.out.println("Introduzca los datos del producto:");
-        System.out.println("Nombre del producto:");
-        nombre = input.next();
+        nombre = pedirNombre();
         if (checkAllowed == true) {
             if (nombreCheck(productos, nombre) == true) {
-                System.out.println("Precio del producto:");
-                precio = input.nextFloat();
-                System.out.println("Stock del producto:");
-                stock = input.nextInt();
+                precio = pedirPrecio();
+                stock = pedirStock();
                 productos.add(new Producto(nombre, precio, stock));
             }
         } else {
-            System.out.println("Precio del producto:");
-            precio = input.nextFloat();
-            System.out.println("Stock del producto:");
-            stock = input.nextInt();
+            precio = pedirPrecio();
+            stock = pedirStock();
             productos.add(new Producto(nombre, precio, stock));
             checkAllowed = true;
         }
@@ -181,24 +172,60 @@ public class Tema10Ej16 {
         }
     }
 
-    public static void comprarProducto(ArrayList<Producto> productos) { //Enseña los productos y pregunta cual quiere comprar y cuantos
+    public static void comprarProducto(ArrayList<Producto> productos) {
         Scanner input = new Scanner(System.in);
         int unidades = 0;
+        int i = 0;
+        boolean enc = false;
         System.out.println("Introduzca el nombre del producto que desea comprar");
         verLista(productos);
         String elección = input.next();
-        for (int i = 0; i < productos.size(); i++) {
+        while (i < productos.size() && !enc) {
             if (productos.get(i).getNombre().equalsIgnoreCase(elección)) {
-                System.out.println("Cuantas unidades desea comprar?");
-                unidades = input.nextInt();
-                if (productos.get(i).getStock() < unidades) {
-                    System.out.println("Error: No hay tantas unidades disponibles, solo hay " + productos.get(i).getStock()); //Check para asegurarse que la cantidad de compra es válida.
-                } else {
-                    productos.get(i).setStock(productos.get(i).getStock() - unidades);
-                    System.out.println("El importe final es " + (unidades * productos.get(i).getStock())); //Dice el importa final y actualiza el stock del producto
-                }
+                pedirUnidades();
+                enc = true;
+            } else {
+                i++;
             }
         }
+        if (enc == true) {
+            if (productos.get(i).getStock() < unidades) {
+                System.out.println("Error: No hay tantas unidades disponibles, solo hay " + productos.get(i).getStock()); //Check para asegurarse que la cantidad de compra es válida.
+            } else {
+                productos.get(i).setStock(productos.get(i).getStock() - unidades);
+                System.out.println("El importe final es " + (unidades * productos.get(i).getStock())); //Dice el importa final y actualiza el stock del producto
+            }
+        } else {
+            System.out.println("Ese producto no existe, volviendo al menu...");
+        }
+    }
+
+    public static float pedirPrecio() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Precio del producto:");
+        float precio = input.nextFloat();
+        return precio;
+    }
+
+    public static int pedirStock() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Stock del producto:");
+        int stock = input.nextInt();
+        return stock;
+    }
+
+    public static int pedirUnidades() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Cuantas unidades desea comprar?");
+        int unidades = input.nextInt();
+        return unidades;
+    }
+
+    public static String pedirNombre() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Nombre del producto:");
+        String unidades = input.next();
+        return unidades;
     }
 
     public static void main(String[] args) {
