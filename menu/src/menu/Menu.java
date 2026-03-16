@@ -42,12 +42,20 @@ public class Menu {
                     System.out.println("Debes elegir una opcion del 1 al 4");
             }
             } catch (InputMismatchException e) {
-                System.out.println("Debe ser un numero.");
+                System.out.println("Debe ser un número.");
                 input.nextLine();
-            }
+            } 
             
         } while (eleccionMenu != 4); //Volvemos a presentar el menu hasta que el usuario decide salir del programa.
 
+    }
+    
+    public static void trycatch() {
+        try {
+            
+        } catch(InputMismatchException e) {
+            System.out.println("Debe introducir un número");
+        }
     }
 
     public static void main(String[] args) {

@@ -119,7 +119,7 @@ public class Tema10Ej16 {
 
     }
 
-    public static void añadirProducto(ArrayList<Producto> productos) { //Metodo que pregunta el valor de los atributos de un nuevo producto(objeto) u lo añade a la lista.
+    public static void añadirProducto(ArrayList<Producto> productos) { //Metodo que pregunta el valor de los atributos de un nuevo producto(objeto) y lo añade a la lista.
         int stock;
         String nombre;
         float precio;
@@ -139,16 +139,20 @@ public class Tema10Ej16 {
             precio = pedirPrecio();
             stock = pedirStock();
             productos.add(new Producto(nombre, precio, stock));
-            checkAllowed = true;
         }
     }
 
     public static boolean nombreCheck(ArrayList<Producto> productos, String nombre) { //Check que se asegura que dos productos no puedan tener el mismo nombre.
         boolean check = true;
-        for (int i = 0; i <= productos.size(); i++) {
+        int i = 0;
+        boolean enc = false;
+        while (enc != true) {
             if (productos.get(i).getNombre().equalsIgnoreCase(nombre)) {
                 System.out.println("No puede añadir un producto con el mismo nombre que otro producto existente");
                 check = false;
+                enc = true;
+            } else {
+                i++;
             }
         }
         return check;
@@ -164,10 +168,15 @@ public class Tema10Ej16 {
     public static void eliminarProducto(ArrayList<Producto> productos) { //Pide el nombre del producto que se quiere eliminar y luego se busca y elimina.
         Scanner input = new Scanner(System.in);
         System.out.println("Introduzca el nombre del producto que quiere eliminar:");
-        String nombre = input.next();
-        for (int i = 0; i <= productos.size(); i++) {
+        String nombre = input.nextLine();
+        int i = 0;
+        boolean enc = false;
+        while(enc != true) {
             if (productos.get(i).getNombre().equalsIgnoreCase(nombre)) {
                 productos.remove(productos.get(i));
+                enc = true;
+            }else {
+                i++;
             }
         }
     }
@@ -179,7 +188,7 @@ public class Tema10Ej16 {
         boolean enc = false;
         System.out.println("Introduzca el nombre del producto que desea comprar");
         verLista(productos);
-        String elección = input.next();
+        String elección = input.nextLine();
         while (i < productos.size() && !enc) {
             if (productos.get(i).getNombre().equalsIgnoreCase(elección)) {
                 pedirUnidades();
@@ -193,7 +202,7 @@ public class Tema10Ej16 {
                 System.out.println("Error: No hay tantas unidades disponibles, solo hay " + productos.get(i).getStock()); //Check para asegurarse que la cantidad de compra es válida.
             } else {
                 productos.get(i).setStock(productos.get(i).getStock() - unidades);
-                System.out.println("El importe final es " + (unidades * productos.get(i).getStock())); //Dice el importa final y actualiza el stock del producto
+                System.out.println("El importe final es " + (unidades * productos.get(i).getPrecio())); //Dice el importa final y actualiza el stock del producto
             }
         } else {
             System.out.println("Ese producto no existe, volviendo al menu...");
