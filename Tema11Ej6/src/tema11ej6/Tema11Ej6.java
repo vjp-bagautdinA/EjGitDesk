@@ -1,9 +1,9 @@
-package menu;
+package tema11ej6;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Menu {
+public class Tema11Ej6 {
     
     public static void menu() { //Metodo principal que enseña al usuario las opciones y controla excepciones.
         int eleccionMenu = -1; //Atributos para controlar excepciones y elegir opciones.
@@ -45,14 +45,6 @@ public class Menu {
             
         } while (eleccionMenu != 4); //Volvemos a presentar el menu hasta que el usuario decide salir del programa.
 
-    }
-    
-    public static void trycatch() {
-        try {
-            
-        } catch(InputMismatchException e) {
-            System.out.println("Debe introducir un número");
-        }
     }
 
     public static void main(String[] args) {
