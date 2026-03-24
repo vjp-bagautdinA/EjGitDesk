@@ -1,11 +1,13 @@
 package tema11ej6;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeSet;
 
-public class Campaña {
+public class Campaña  {
     
     //Atributos
     private Set<Donacion> donaciones;
@@ -43,8 +45,7 @@ public class Campaña {
     
     //Metodos
     
-    public void añadirDonacion(Campaña SIP) {
-        Scanner input = new Scanner(System.in);
+    public void añadirDonacion() {
         System.out.println("Introduzca su nombre:");
         String nombre = pedirString();
         System.out.println("Introduzca la cantidad que quiere donar");
@@ -53,14 +54,12 @@ public class Campaña {
         donaciones.add(donacion);       
     }
     
-    public void mostrarDonaciones(Campaña SIP) {
+    public void mostrarDonaciones() {
         System.out.println(donaciones);
     }
     
-    public void mostrarDonacionesPorNombre (Campaña SIP) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Introduzca el nombre del donante.");
-        String nombre = input.nextLine();
+    public void mostrarDonacionesPorNombre () {
+        String nombre = pedirString();
         Iterator<Donacion> it = donaciones.iterator();
         Donacion aux;
         while (it.hasNext()) {
@@ -69,6 +68,28 @@ public class Campaña {
                 System.out.println(aux);
             }
         }
+    }
+    
+    public void mostrarDonacionesTotales() {
+        System.out.println(donaciones.size());
+    }
+    //
+    
+    public void mostrarDineroRecaudado() {
+        Iterator<Donacion> it = donaciones.iterator();
+        int dinero = 0;
+        Donacion aux;
+        while (it.hasNext()) {
+            aux = it.next();
+            dinero = dinero + aux.getCantidad();
+        }
+        System.out.println(dinero);
+    }
+    
+    public void ordenar(TreeSet treeSet) {
+        Iterator<Donacion> it = donaciones.iterator();
+        ArrayList<Donacion> donacionesOrdenadas = new ArrayList(donaciones);
+        donacionesOrdenadas.sort((donacion1,donacion2) -> Integer.compare(donacion1.getCantidad(), donacion2.getCantidad()));
     }
     
     public static String pedirString() {

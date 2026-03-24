@@ -24,6 +24,7 @@ public class Tema11Ej6 {
                 eleccionMenu = input.nextInt();
                 switch (eleccionMenu) {//Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
                 case 1 ->  {
+                    
                     ready = true;
                 }
                 case 2 ->  {
@@ -67,9 +68,7 @@ public class Tema11Ej6 {
         } while (eleccionMenu != 7); //Volvemos a presentar el menu hasta que el usuario decide salir del programa.
 
     }
-    
-    
-    
+
     public static String pedirString() {
         Scanner input = new Scanner(System.in);
         String string = input.nextLine();

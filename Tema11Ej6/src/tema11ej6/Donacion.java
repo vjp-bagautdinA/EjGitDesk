@@ -1,6 +1,6 @@
 package tema11ej6;
 
-public class Donacion {
+public class Donacion implements Comparable<Donacion> {
     
     //Atributos
     private String nombre;
@@ -40,6 +40,17 @@ public class Donacion {
     @Override
     public String toString() {
         return "Donacion{" + "nombre=" + nombre + ", cantidad=" + cantidad + '}';
+    }
+
+    @Override
+    public int compareTo(Donacion o) {
+        if (this.cantidad < o.getCantidad()) {
+            return -1;
+        } else if (this.cantidad > o.getCantidad()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
     
 }
