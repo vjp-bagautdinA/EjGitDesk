@@ -2,6 +2,7 @@ package tema11ej8;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Tema11Ej8 {
@@ -25,11 +26,12 @@ public class Tema11Ej8 {
                 eleccionMenu = input.nextInt();
                 switch (eleccionMenu) {//Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
                     case 1 -> {
-
+                        añadirCiudad(ciudades);
                         ready = true;
                     }
                     case 2 -> {
                         if (ready == true) {
+                            mostrarCiudades(ciudades);
                         } else {
                             System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
                         }
@@ -71,19 +73,39 @@ public class Tema11Ej8 {
 
     }
 
-    public static void añadirCiudad() {
-        boolean terminado = false;
+    public static void añadirCiudad(ArrayList ciudades) {
         System.out.println("Introduzca el nombre de la ciudad:");
-        String nombre = pedirString();
-        do {
-            System.out.println("");
-        } while(terminado != true);
+        String nombreCiudad = pedirString();
+        Ciudad nuevaCiudad = new Ciudad(nombreCiudad);
+        nuevaCiudad.añadirSede();
+        ciudades.add(ciudades);
+    }
+
+    public static void mostrarCiudades(ArrayList ciudades) {
+        for (int i = 0; i <= ciudades.size(); i++) {
+            System.out.println(ciudades.get(i));
+        }
+    }
+    
+    public static void mostrarSedesIngresosEncimaMedia(ArrayList ciudades) {
+        Iterator<Ciudad> it = ciudades.iterator();
+        Ciudad aux;
+        while(it.hasNext()) {
+            aux = it.next();
+            aux.
+        }
     }
 
     public static String pedirString() {
         Scanner input = new Scanner(System.in);
         String string = input.nextLine();
         return string;
+    }
+    
+    public static float pedirFloat() {
+        Scanner input = new Scanner(System.in);
+        float Float = input.nextFloat();
+        return Float;
     }
 
     public static void main(String[] args) {
