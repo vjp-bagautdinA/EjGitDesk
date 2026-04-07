@@ -38,6 +38,7 @@ public class Tema11Ej8 {
                     }
                     case 3 -> {
                         if (ready == true) {
+                            mostrarSedesIngresosEncimaMedia(ciudades);
                         } else {
                             System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
                         }
@@ -92,9 +93,25 @@ public class Tema11Ej8 {
         Ciudad aux;
         while(it.hasNext()) {
             aux = it.next();
-            aux.
+            aux.ingresosSedes();
         }
     }
+    
+    public void añadirSedeACiudad(ArrayList ciudades) {
+        System.out.println("Introduzca el nombre de la ciudad a la que quieres añadir una nueva sede.");
+        String ciudadNombre = pedirString();
+        Iterator<Ciudad> it = ciudades.iterator();
+        Ciudad aux;
+        while(it.hasNext()) {
+            aux = it.next();
+            if (aux.getNombre() == ciudadNombre) {
+                aux.añadirSede();
+            } else {
+                System.out.println("No se ha encontrado esa ciudad.");
+            }
+        }
+    }
+    
 
     public static String pedirString() {
         Scanner input = new Scanner(System.in);

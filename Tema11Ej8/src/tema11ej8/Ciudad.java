@@ -59,8 +59,8 @@ public class Ciudad {
         while (it.hasNext()) {
             aux = it.next();
             aux.getIngresos();
-            if (aux.getIngresos() < (mediaIngresosSedes())) {
-                System.out.println(aux.getIngresos());
+            if (aux.getIngresos() > (mediaIngresosSedes())) {
+                System.out.println(aux.toString());
             }
         }
     }
@@ -78,9 +78,9 @@ public class Ciudad {
         }
         media = ingresos/numeroSedes;
         return media;
-        
-
     }
+    
+    
 
     //toString
     @Override
