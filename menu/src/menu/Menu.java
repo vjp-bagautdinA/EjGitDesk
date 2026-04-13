@@ -35,11 +35,14 @@ public class Menu {
                         System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
                     }
                 }
+                case 4 ->  {
+                    System.out.println("Saliendo...");
+                }
                 default -> System.out.println("Debes elegir una opcion del 1 al 4");
             }
                 //Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
                             } catch (InputMismatchException e) {
-                System.out.println("Debe ser un número.");
+                System.out.println("Debe introducir un número sin letras o simbolos.");
                 input.nextLine();
             } 
             
@@ -55,6 +58,11 @@ public class Menu {
         }
     }
 
+    public static String pedirString() {
+        Scanner input = new Scanner(System.in);
+        String string = input.nextLine();
+        return string;
+    }
     public static void main(String[] args) {
         // TODO code application logic here
     }
