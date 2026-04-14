@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
-    
+
     public static void menu() { //Metodo principal que enseña al usuario las opciones y controla excepciones.
         int eleccionMenu = -1; //Atributos para controlar excepciones y elegir opciones.
         boolean ready = false;
@@ -19,52 +19,67 @@ public class Menu {
                 System.out.println("4. Salir.");
                 System.out.println("-------------------------------------");
                 eleccionMenu = input.nextInt();
-                switch (eleccionMenu) {//Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
-                case 1 ->  {
-                    ready = true;
-                }
-                case 2 ->  {
-                    if (ready == true) {
-                    } else {
-                        System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
-                    }
-                }
-                case 3 ->  {
-                    if (ready == true) {
-                    } else {
-                        System.out.println("Para usar esta opcion debe usar la opcion 1 primero.");
-                    }
-                }
-                case 4 ->  {
-                    System.out.println("Saliendo...");
-                }
-                default -> System.out.println("Debes elegir una opcion del 1 al 4");
-            }
-                //Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
-                            } catch (InputMismatchException e) {
-                System.out.println("Debe introducir un número sin letras o simbolos.");
                 input.nextLine();
-            } 
-            
+                switch (eleccionMenu) {//Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
+                    case 1 -> {
+                        ready = true;
+                    }
+                    case 2 -> {
+                        if (ready == true) {
+                        } else {
+                            System.out.println("ERROR: Para usar esta opcion debe usar la opcion 1 primero.");
+                        }
+                    }
+                    case 3 -> {
+                        if (ready == true) {
+                        } else {
+                            System.out.println("ERROR: Para usar esta opcion debe usar la opcion 1 primero.");
+                        }
+                    }
+                    case 4 -> {
+                        System.out.println("Saliendo...");
+                    }
+                    default ->
+                        System.out.println("ERROR: Debes elegir una opcion del 1 al 4");
+                }
+                //Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR: Debe introducir un número sin letras o simbolos.");
+                input.nextLine();
+            }
+
         } while (eleccionMenu != 4); //Volvemos a presentar el menu hasta que el usuario decide salir del programa.
 
     }
-    
+
     public static void trycatch() {
         try {
-            
-        } catch(InputMismatchException e) {
-            System.out.println("Debe introducir un número");
+
+        } catch (InputMismatchException e) {
+            System.out.println("ERROR: Debe introducir un número");
         }
     }
 
-    public static String pedirString() {
-        Scanner input = new Scanner(System.in);
+    public static String pedirString(Scanner input) {
         String string = input.nextLine();
         return string;
     }
+
+    public static int pedirInt(Scanner input) {
+        while (true) {
+            try {
+                int val = input.nextInt();
+                input.nextLine();
+                return val;
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR: Por favor, introduce un número válido.");
+                input.nextLine();
+            }
+        }
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
+
 }
