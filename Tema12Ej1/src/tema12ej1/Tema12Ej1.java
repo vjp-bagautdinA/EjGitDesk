@@ -30,7 +30,7 @@ public class Tema12Ej1 {
                 case 5 -> System.out.println("Saliendo...");
                 default -> System.out.println("Debes elegir una opcion del 1 al 5");
             }
-                //Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
+                ////Try catch con todos los errores con su respuesta correspondiente
                             } catch (InputMismatchException e) {
                 System.out.println("Debe introducir un número sin letras o simbolos.");
                 input.nextLine();
@@ -41,19 +41,19 @@ public class Tema12Ej1 {
     }
     
     public static void añadirContacto(ArrayList<Contacto> contactos, Scanner input) throws InputMismatchException {
-        System.out.println("Escriba el nombre del contacto.");
+        System.out.println("Escriba el nombre del contacto."); //Cogemos todos los datos del contacto en variables
         String nombre = pedirString(input);
         System.out.println("Escriba la edad del contacto.");
         int edad = pedirInt(input);
         System.out.println("Escriba el numero de telefono");
         String numero = pedirString(input);
-        Contacto nuevoContacto = new Contacto(nombre,edad,numero);
+        Contacto nuevoContacto = new Contacto(nombre,edad,numero); //Los guardamos en un contacto nuevo y lo añadimos al arrayList
         contactos.add(nuevoContacto);
         System.out.println("El contacto ha sido añadido.");
     }
     
     public static void verContactos(ArrayList<Contacto> contactos) {
-        Iterator<Contacto> it = contactos.iterator();
+        Iterator<Contacto> it = contactos.iterator();//Itireramos el arrayList y imprimimos el arrayList de cada contacto
         Contacto aux;
         System.out.println("Lista de contactos:");
         while(it.hasNext()) {
@@ -62,8 +62,8 @@ public class Tema12Ej1 {
         }
     }
     
-    public static void eliminarContacto(ArrayList<Contacto> contactos, Scanner input) throws InputMismatchException {
-        System.out.println("Escriba el numero de telefono del contacto que quiera eliminar.");
+    public static void eliminarContacto(ArrayList<Contacto> contactos, Scanner input) throws InputMismatchException {//Preguntamos el numero del contacto que se quiere borrar, lo buscamos en el array list y lo eliminamos
+        System.out.println("Escriba el numero de telefono del contacto que quiera eliminar."); 
         String numero = pedirString(input);
         boolean encontrado = false;
         Iterator<Contacto> it = contactos.iterator();
@@ -76,12 +76,12 @@ public class Tema12Ej1 {
                 System.out.println("El contacto ha sido eliminado.");
             }
         }
-        if (encontrado == false) {
+        if (encontrado == false) { //No se se encuentra no se elimina nada y se le dice al usuario
             System.out.println("No se ha podido encontrar un contacto con ese numero.");
         }
     }
     
-    public static void mostrarContactosPorEdad(ArrayList<Contacto> contactos) {
+    public static void mostrarContactosPorEdad(ArrayList<Contacto> contactos) { //Se organiza el arrayList con .sort y se muestra el array
         contactos.sort(Comparator.comparingInt(Contacto::getEdad));
         verContactos(contactos);
     }

@@ -48,7 +48,7 @@ public class Contacto {
     //toString
     @Override
     public String toString() {
-        return "Nombre: "+nombre + "\nEdad: "+ edad +"Numero: "+numero;
+        return "Nombre: "+nombre + "\nEdad: "+ edad +"\nNumero: "+numero;
     }
 
 }

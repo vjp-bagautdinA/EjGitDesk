@@ -5,10 +5,9 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void menu() { //Metodo principal que enseña al usuario las opciones y controla excepciones.
+    public static void menu(Scanner input) { //Metodo principal que enseña al usuario las opciones y controla excepciones.
         int eleccionMenu = -1; //Atributos para controlar excepciones y elegir opciones.
         boolean ready = false;
-        Scanner input = new Scanner(System.in);
         do {
             try {
                 System.out.println("-------------------------------------");//Las opciones del menu separadas por barras y controladas con un trycatch.
@@ -18,8 +17,7 @@ public class Menu {
                 System.out.println("3. .");
                 System.out.println("4. Salir.");
                 System.out.println("-------------------------------------");
-                eleccionMenu = input.nextInt();
-                input.nextLine();
+                eleccionMenu = pedirIntMenu(input);
                 switch (eleccionMenu) {//Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
                     case 1 -> {
                         ready = true;
@@ -42,7 +40,7 @@ public class Menu {
                     default ->
                         System.out.println("ERROR: Debes elegir una opcion del 1 al 4");
                 }
-                //Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
+                //Try catch con todos los errores con su respuesta correspondiente
             } catch (InputMismatchException e) {
                 System.out.println("ERROR: Debe introducir un número sin letras o simbolos.");
                 input.nextLine();
@@ -65,6 +63,12 @@ public class Menu {
         return string;
     }
 
+    public static int pedirIntMenu(Scanner input) {
+        int val = input.nextInt();
+        input.nextLine();
+        return val;
+    }
+
     public static int pedirInt(Scanner input) {
         while (true) {
             try {
@@ -77,9 +81,10 @@ public class Menu {
             }
         }
     }
-    
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner input = new Scanner(System.in);
+        menu(input);
     }
 
 }
