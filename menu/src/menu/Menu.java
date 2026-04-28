@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void menu(Scanner input) { //Metodo principal que enseña al usuario las opciones y controla excepciones.
+    public static void menu() { //Metodo principal que enseña al usuario las opciones y controla excepciones.
+        Scanner input = new Scanner(System.in);
         int eleccionMenu = -1; //Atributos para controlar excepciones y elegir opciones.
         boolean ready = false;
         do {
@@ -17,7 +18,7 @@ public class Menu {
                 System.out.println("3. .");
                 System.out.println("4. Salir.");
                 System.out.println("-------------------------------------");
-                eleccionMenu = pedirIntMenu(input);
+                eleccionMenu = pedirInt(input);
                 switch (eleccionMenu) {//Dependiendo del numero dado por el usuario ejecutamos el método correspondiente.
                     case 1 -> {
                         ready = true;
@@ -63,28 +64,15 @@ public class Menu {
         return string;
     }
 
-    public static int pedirIntMenu(Scanner input) {
-        int val = input.nextInt();
-        input.nextLine();
-        return val;
-    }
-
     public static int pedirInt(Scanner input) {
-        while (true) {
-            try {
-                int val = input.nextInt();
-                input.nextLine();
-                return val;
-            } catch (InputMismatchException e) {
-                System.out.println("ERROR: Por favor, introduce un número válido.");
-                input.nextLine();
-            }
-        }
+        int v = input.nextInt();
+        input.nextLine();
+        return v;
     }
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        menu(input);
+        menu();
     }
 
 }
